@@ -1,0 +1,23 @@
+[
+    {
+        "firstName":"Amy",
+        "lastName":"Clarence",
+        "gender":"female",
+        "age":"27",
+        "averageGrade":"7"
+    },
+    {
+        "firstName":"Tom",
+        "lastName":"Collins",
+        "gender":"male",
+        "age":"23",
+        "averageGrade":"9"
+    },
+    {
+        "firstName":"Tod",
+        "lastName":"Bronkowski",
+        "gender":"male",
+        "age":"21",
+        "averageGrade":"10"
+    }
+]
