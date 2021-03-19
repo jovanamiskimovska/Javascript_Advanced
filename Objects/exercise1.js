@@ -1,26 +1,23 @@
 function Library(name, books, address) {
     this.name = name;
     this.books = books === undefined ? [] : books;
-    this.address = address;
-    this.numberOfMembers = this.books.length*15;
+    this.address = address === undefined ? "Skopje" : address;
+    this.numberOfBooks = this.books.length * 15;
     this.printBooks = function () {
         if (this.books.length > 0) {
-            this.books.forEach(book => {
-                console.log(book);
-            })
+            this.books.forEach(book => console.log(book))
         }
         else {
-            return "There aren't any books in the library";
+            console.log("There are no books in this particular library!")
         }
-        this.addBook = function (book) {
-            if (!!book) {
-                let newBookObject = Object.create(book);
-                this.books.push(newBookObject);
-            }
-            else {
-                throw new Error("Invalid book object!")
-            }
+    }
+    this.addBook = function (book) {
+        if (!!book && book instanceof Book) {
+            let newBook = Object.create(book);
+            this.books.push(newBook);
         }
+        else{
+            throw new Error("Invalid input of book");
     }
 }
 
@@ -73,9 +70,9 @@ function Author(firstName, lastName, yearOfBirth) {
 }
 
 
-let author1 = ("Dan", "Brown", 1964);
-let author2 = ("Harlan", "Coben", 1962);
-let author3 = ("Khaled", "Hosseini", 1965);
+let author1 = new Author("Dan", "Brown", 1964);
+let author2 = new Author("Harlan", "Coben", 1962);
+let author3 = new Author("Khaled", "Hosseini", 1965);
 
 let book1 = new Book("Inferno", "Mystery", [], [author1]);
 let book2 = new Book("The Woods", "Thriller", []);
@@ -87,15 +84,17 @@ let library2 = new Library("Library 2", [book2, book3], "Manchester");
 
 //TESTING THE METHODS
 
-  //author2.startBook(book2); // ne go logira, not a function javuva, a skoro slicna e kako addLibrary
-
  book3.addLibrary(library1);
  library1.printBooks();
+
 book2.removeLibrary(library1);
 library1.printBooks();
 
-  //library2.addBook(book1); //n e go logira, not a function javuva, a skoro slicna e kako addLibrary
- // library2.printBooks();
+author2.startBook(book2);
+console.log(author2.currentBook)
+
+ library2.addBook(book1);
+ library2.printBooks();
 
 
 
